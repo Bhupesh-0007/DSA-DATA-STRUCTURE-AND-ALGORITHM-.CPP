@@ -1,0 +1,11 @@
+{
+  "default_policy": { "in": "DROP", "out": "ALLOW" },
+  "log_drops": true,
+  "rules": [
+    { "action": "DROP",  "direction": "any", "src": "203.0.113.0/24", "comment": "blocklisted range (TEST-NET-3 example)" },
+    { "action": "ALLOW", "direction": "in",  "proto": "tcp", "src": "192.168.0.0/16", "dport": "22", "comment": "SSH from LAN only" },
+    { "action": "ALLOW", "direction": "in",  "proto": "icmp", "comment": "allow ping" },
+    { "action": "DROP",  "direction": "out", "proto": "tcp", "dport": "23", "comment": "block outbound telnet" },
+    { "action": "DROP",  "direction": "out", "proto": "udp", "dport": "6881-6889", "comment": "block BitTorrent ports" }
+  ]
+}
